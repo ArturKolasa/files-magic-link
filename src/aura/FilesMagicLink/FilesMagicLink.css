@@ -1,0 +1,4 @@
+.THIS .slds-accordion__content p:hover{
+    color: #0070d2;
+    cursor: pointer;
+}
