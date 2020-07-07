@@ -1,0 +1,7 @@
+<aura:component description="FileLinkByFoldersLine">
+    <aura:attribute name="file" type="Object" description="File from wrapper FileWrapper"/>
+
+    <aura:if isTrue="{!!empty(v.file)}">
+        <p onclick="{!c.gotoURL}" class="slds-m-around_small slds-p-left_small">{!v.file.fileTitle}</p>
+    </aura:if>
+</aura:component>

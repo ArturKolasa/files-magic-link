@@ -1,0 +1,8 @@
+<design:component>
+    <design:attribute name="title" label="Component Title" description="Specify component title" />
+    <design:attribute name="folderPath1" label="Folder path" description="Path to folder in files" />
+    <design:attribute name="folderPath2" label="Folder path" description="Path to folder in files" />
+    <design:attribute name="folderPath3" label="Folder path" description="Path to folder in files" />
+    <design:attribute name="folderPath4" label="Folder path" description="Path to folder in files" />
+    <design:attribute name="folderPath5" label="Folder path" description="Path to folder in files" />
+</design:component>

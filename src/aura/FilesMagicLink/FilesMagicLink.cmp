@@ -1,0 +1,34 @@
+<aura:component description="FilesMagicLink" controller="FilesMagicLinkController" implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <aura:attribute name="isSpinnerEnabled" type="Boolean" default="false" description="Indicate when spinner should appear"/>
+    <aura:attribute name="noFoldersWithFiles" type="Boolean" default="false" description="Indicate if folder with files are retrieved"/>
+    <aura:attribute name="filesByFolder" type="List"/>
+    <aura:attribute name="firstFolderName" type="String"/>
+    <aura:attribute name="title" type="String" default="" access="global"/>
+    <aura:attribute name="folderPath1" type="String" access="global"/>
+    <aura:attribute name="folderPath2" type="String" access="global"/>
+    <aura:attribute name="folderPath3" type="String" access="global"/>
+    <aura:attribute name="folderPath4" type="String" access="global"/>
+    <aura:attribute name="folderPath5" type="String" access="global"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <lightning:card title="{!v.title}" class="slds-card">
+        <aura:if isTrue="{!!empty(v.filesByFolder)}">
+            <lightning:accordion aura:id="accordion" activeSectionName="{!v.firstFolderName}">
+                <aura:iteration items="{!v.filesByFolder}" var="folder" indexVar="key">
+                        <lightning:accordionSection name="{!folder.folderName}" label="{!folder.folderName}">
+                            <aura:iteration items="{!folder.fileWrappers}" var="file" indexVar="key2">
+                                <c:FilesMagicLinkLine file="{!file}"/>
+                            </aura:iteration>
+                        </lightning:accordionSection>
+                </aura:iteration>
+            </lightning:accordion>
+        </aura:if>
+        <aura:if isTrue="{!v.noFoldersWithFiles}">
+            <p class="slds-m-around_small slds-p-left_small">No files retrieved</p>
+        </aura:if>
+    </lightning:card>
+
+    <aura:renderIf isTrue="{!v.isSpinnerEnabled}">
+        <lightning:spinner size="medium" variant="brand" />
+    </aura:renderIf>
+</aura:component>
